@@ -4,7 +4,7 @@ $("#searchButton").on("click", function (e) { app.NearBy.onClickHandler(); });
 
 
 // Initializing necessary Google Map's API Objects for later consumption.
-app.NearBy._initializeElement = function () {
+app.NearBy._initializeElements = function () {
     app.NearBy.PlacesService = new google.maps.places.PlacesService(app.Base.map);
     app.NearBy.DistanceMatrixService = new google.maps.DistanceMatrixService();
     app.NearBy.DirectionsService = new google.maps.DirectionsService();
@@ -54,7 +54,6 @@ app.NearBy.onClickHandler = function () {
     app.Base.map.fitBounds(app.NearBy.circleOverlayObj.getBounds());
 
 }
-
 
 // 1.1 Places Reauest Object & config Options.
 app.NearBy.PlacesRequestHandler = function (arr) {
@@ -134,7 +133,7 @@ app.NearBy.PlacesResultsMarkerAddHandler = function (placeObject) {
     }); //creating new marker object
 
     marker.setIcon(({
-        url: "/assets/images/markers/" + app.NearBy.iconSync[app.NearBy.category] + ".png",
+        url: "/Rajprabhu14.github.io/assets/images/markers/" + app.NearBy.iconSync[app.NearBy.category] + ".png",
         size: new google.maps.Size(71, 71),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(17, 34),
@@ -279,8 +278,8 @@ app.NearBy.MarkerRemoveHandler = function (MarkersArray) {
     placesTypeSync object is used in syncing the places type in the Radar Search request object.
 
 **/
-app.NearBy.placesTypeSync = {
 
+app.NearBy.placesTypeSync = {
         "ATM":"atm",
         "Bank":"bank",
         "Clinic":"doctor",
@@ -290,7 +289,6 @@ app.NearBy.placesTypeSync = {
 
 // Icons Sync.
 app.NearBy.iconSync = {
-
     "ATM": "atm",
     "Bank": "bank",
     "Clinic": "clinic",

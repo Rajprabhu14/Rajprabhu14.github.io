@@ -6,9 +6,6 @@ google.maps.Circle.prototype.contains = function (latLng) {
 }
 
 
-
-
-
 /** Event Listener    **/
 $(document).ready(function () {
     google.maps.event.addDomListener(window, 'load', app.Base._initialize);    
@@ -18,6 +15,9 @@ $(document).ready(function () {
 var app = app || {}; //Main Application Object
 app.NearBy = {};  //Search Nearby Object
 app.Base = {};    //Base Object
+app.Geolocation = {}; //Geolocation Object Handler
+
+app.Base._PlaceSearchHandler = {}; // Places search Object
  
 
 /**   1.0   Google Maps Object Handler.          **/
@@ -35,7 +35,8 @@ app.Base._initialize = function initialize() {
 
     app.Base.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     app.CommonUtils._initializeElements();
-    app.NearBy._initializeElement();
+    app.NearBy._initializeElements();
+    app.Geolocation._initializeElements();
 
 
     app.Base._PlaceSearchHandler.process();
@@ -43,8 +44,6 @@ app.Base._initialize = function initialize() {
 }
 
 /**   2.0   Place Search Handler.          **/
-
-app.Base._PlaceSearchHandler = {}; // Places search Object
 
 app.Base._PlaceSearchHandler.process = function () {
 
@@ -73,7 +72,11 @@ app.Base._PlaceSearchHandler.process = function () {
         app.CommonUtils.marker.setVisible(true);
 
         var address = app.CommonUtils._getAddressComponentForPlace(place);
-        app.CommonUtils.infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+        app.CommonUtils.infowindow.setContent('<div><strong>' +
+                                              '<div><i class="fa fa-globe fa-lg" style="float:right;" onClick="app.Geolocation.UpdateInfoInSearchForPlaces(this);" title="Update position in Nearby Search"> </i></div>' +
+                                               place.name + 
+                                              '</strong><br>' + address + '</div>');
+      
         app.CommonUtils.infowindow.open(app.Base.map, app.CommonUtils.marker);
 
     });
