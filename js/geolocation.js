@@ -71,10 +71,9 @@ app.Geolocation.UpdateInfoInSearch = function (IsPosition) {
         currentLocation = new google.maps.LatLng(app.Geolocation.latitude, app.Geolocation.longitude);
         var marker = new google.maps.Marker({
         position: currentLocation,
+        map: app.Base.map,
         title:'My Location'
          });
-
-        marker.setMap(app.Base.map);
         
 }
         
