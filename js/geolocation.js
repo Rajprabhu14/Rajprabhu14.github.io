@@ -75,14 +75,11 @@ app.Geolocation.UpdateInfoInSearch = function (IsPosition) {
          });
 
         marker.setMap(app.Base.map);
-        google.maps.event.addDomListener(marker,'load',function() {
- 
-            app.Base.map.setCenter(marker.getPosition());
-        });
+        
 }
         
     }
-}
+
 
 
 /**
