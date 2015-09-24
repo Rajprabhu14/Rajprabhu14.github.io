@@ -68,6 +68,14 @@ app.Geolocation.UpdateInfoInSearch = function (IsPosition) {
         $('#searchLongitude').val(app.Geolocation.longitude);
         app.Base.map.setCenter(new google.maps.LatLng(app.Geolocation.latitude, app.Geolocation.longitude));
         app.Base.map.setZoom(15);
+        currentLocation = new google.maps.LatLng(app.Geolocation.latitude, app.Geolocation.longitude);
+        var marker = new google.maps.Marker({
+        position: currentLocation,
+        title:'My Location'
+         });
+
+        marker.setMap(app.Base.map);
+        
     }
 }
 
@@ -86,13 +94,7 @@ app.Geolocation.UpdateInfoInSearchForPlaces = function (Object) {
     app.Base.map.setCenter(new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()));
     
 }
-currentLocation = new google.maps.LatLng(app.Geolocation.latitude, app.Geolocation.longitude);
-var marker = new google.maps.Marker({
-  position: currentLocation,
-  title:'My Location'
-  });
 
-marker.setMap(app.Base.map);
 
 
 
