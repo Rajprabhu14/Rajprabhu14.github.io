@@ -84,14 +84,15 @@ app.Geolocation.UpdateInfoInSearchForPlaces = function (Object) {
     $('#searchLatitude').val(place.geometry.location.lat());
     $('#searchLongitude').val(place.geometry.location.lng());
     app.Base.map.setCenter(new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()));
-    app.Base.map.setZoom(15);
-     var pos = {
-        lat: app.Geolocation.latitude,
-        lng: app.Geolocation.longitude
-     };
-    infoWindow.setPosition(pos);
-      infoWindow.setContent('My Location');
+    
 }
+
+var marker = new google.maps.Marker({
+  position: {new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng())},
+  title:'My Location'
+  });
+
+marker.setMap(app.Base.map);
 
 
 
