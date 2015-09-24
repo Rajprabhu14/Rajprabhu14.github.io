@@ -86,9 +86,9 @@ app.Geolocation.UpdateInfoInSearchForPlaces = function (Object) {
     app.Base.map.setCenter(new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()));
     
 }
-
+currentLocation = new google.maps.LatLng(app.Geolocation.latitude, app.Geolocation.longitude);
 var marker = new google.maps.Marker({
-  position: {new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng())},
+  position: currentLocation,
   title:'My Location'
   });
 
