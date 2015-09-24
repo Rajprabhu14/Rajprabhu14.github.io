@@ -34,7 +34,7 @@ app.Base._initialize = function initialize() {
     };
 
     app.Base.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-    var infoWindow = new google.maps.InfoWindow({map: app.Base.map});
+  
     app.CommonUtils._initializeElements();
     app.NearBy._initializeElements();
     app.Geolocation._initializeElements();
